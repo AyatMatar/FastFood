@@ -52,11 +52,3 @@ A full-stack web application built using ASP.NET MVC and SQL Server that simulat
 1. Admin logs in and manages the menu.
 2. Users browse the menu and add items to their cart.
 3. Users can update or remove items from the cart before checkout.
-
----
-
-##  Setup Instructions
-
-1. Clone the repository:
-```bash
-git clone https://github.com/your-username/FastFood.git
