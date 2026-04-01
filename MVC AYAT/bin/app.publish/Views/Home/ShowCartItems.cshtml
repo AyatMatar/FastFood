@@ -1,0 +1,183 @@
+﻿@model IEnumerable<MVC_AYAT.Orderdetal>
+
+@{
+    ViewBag.Title = "ShowCartItems";
+}
+
+
+<style>
+    #CartItemContainer {
+        float: left;
+        width: 40%;
+       
+        margin-top: 30px;
+        margin-left: 486px;
+    
+    }
+
+    #CortTitel {
+        float: left;
+        width: 100%;
+      
+        height: 39px;
+        font-size: 23px;
+        text-align: center;
+        background: #b189ff;
+        color: #fff;
+    }
+    .ItemRow {
+        float: left;
+        width: 100%;
+    
+    }
+    #itempric {
+        float: right;
+        font-size: 16px;
+        margin-top: 43px;
+        font-style: italic;
+        color: #1a191c;
+    }
+    .RemoveRow {
+        float: right;
+        color: #721cc1;
+        margin-top: 15px;
+        cursor: pointer;
+    }
+    #imge {
+        float: left;
+        width: 100px;
+        height: 100px;
+        margin-top: 11px;
+        margin-left: 12px;
+    }
+    #spanSizeName {
+        float: left;
+        margin-top: 46px;
+        font-size: 19px;
+        margin-left: 9px;
+        width: 214px;
+        color: #1a191c;
+        font-style: oblique;
+    }
+    .QuantityContenar {
+        float: left;
+        margin-top: 51px;
+    
+    }
+    input[disabled] {
+        cursor: default;
+        color: #383640;
+        text-align: center;
+    }
+
+    .TotalPrice {
+        float: left;
+        width: 100%;
+        height: 34px;
+        font-size: 19px;
+        text-align: center;
+        background: #b189ff;
+        color: #fff;
+        margin-top:10px;
+    }
+    #Checkout button {
+        float: left;
+        border: 1px solid #ffff;
+        background-color: #ac78ff;
+        color: #fff;
+        border-radius: 9px;
+        width: 156px;
+        margin-left: 303px;
+        height: 38px;
+    }
+</style>
+    <div id="CartItemContainer">
+
+        <span id="CortTitel">My Cart</span>
+        @foreach (var item in Model)
+        {
+             <div class="ItemRow">
+                 <img id="imge" src="@Url.Content("/Content/img/"+item.ItemSizePric.Item.ImageName+"")" />
+                 <span id="spanSizeName">@item.ItemSizePric.Item.Name (@item.ItemSizePric.Size.Name)</span>
+             
+                 <div class="QuantityContenar">
+                     <button class="Quantity" onclick="AddQuantity(@item.OrderdetalsID)">+</button>
+                     <input type="number" id="Quantity-@item.OrderdetalsID" min="1" value="@item.Quontity" disabled />
+                     <button class="Quantity" onclick="RemovQuantity(@item.OrderdetalsID)">-</button>
+                 </div>
+             
+                    <span onclick="RemoveRow(@item.OrderdetalsID)" class="RemoveRow"><i class="fa fa-times-rectangle" style="font-size:24px"></i></span>
+                    <span id="itempric">@item.Price JOD</span>
+             </div>
+         }
+        <span class="TotalPrice">Total :@Model.Sum(x=>x.Price) JOD</span>
+        <div id="Checkout" >
+            <button onclick="Checkout()" @(Model.Count()>0 ?"" : "disabled")>Checkout</button>
+        </div>
+    </div>
+
+<script>
+    var OrderID ="@(Model.FirstOrDefault()==null?-1:Model.FirstOrDefault().OrderID)";
+
+    function RemoveRow(OrderdetalsID) {
+        $.ajax({
+            url:"/Home/RemoveRow",
+            data: { OrderdetalsID: OrderdetalsID },
+            type: "Get",
+            success: function () {
+                window.location = "/Home/ShowCartItems?OrderID=" + OrderID + ""
+            }
+            
+        });
+       
+    }
+
+    function AddQuantity(OrderdetalsID) {
+        var CurrentQuantity = parseInt($("#Quantity-" + OrderdetalsID + "").val()) + 1;
+        $("#Quantity-" + OrderdetalsID + "").val("" + CurrentQuantity + "")
+        $.ajax({
+            url: "/Home/AddQuantity",
+            data: { OrderdetalsID: OrderdetalsID },
+            type: "Get",
+            success: function () {
+                window.location = "/Home/ShowCartItems?OrderID=" + OrderID + ""
+            }
+
+        });
+
+    }
+
+    function RemovQuantity(OrderdetalsID) {
+        var CurrentQuantity = parseInt($("#Quantity-" + OrderdetalsID + "").val());
+        if (CurrentQuantity > 1) {
+            CurrentQuantity = CurrentQuantity - 1;
+        }
+        $("#Quantity-" + OrderdetalsID + "").val("" + CurrentQuantity + "")
+        $.ajax({
+            url: "/Home/RemovQuantity",
+            data: { OrderdetalsID: OrderdetalsID },
+            type: "Get",
+            success: function () {
+                window.location = "/Home/ShowCartItems?OrderID=" + OrderID + ""
+            }
+        });
+
+    }
+
+    function Checkout() {
+      
+        $.ajax({
+            url: "/Home/Checkout",
+            data: { OrderID: OrderID },
+            type: "Get",
+            success: function () {
+                window.location ="/Home";
+            }
+        });
+
+    }
+   
+
+</script>
+
+

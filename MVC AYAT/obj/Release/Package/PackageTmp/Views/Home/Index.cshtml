@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    .mySlides {
+        display: none;
+    }
+
+    .w3-content w3-section {
+        max-width: 500px
+    }
+
+    .w3-animate-bottom {
+        position: relative;
+        margin-top: 104px;
+        height: 516px;
+    }
+</style>
+
+
+<div class="w3-content w3-section" style="max-width: 846px">
+    <img class="mySlides w3-animate-bottom" src="~/Content/img/cheesecakehome.jpg" style="width:100%">
+    <img class="mySlides w3-animate-bottom" src="~/Content/img/pizza.jpg" style="width:100%">
+    <img class="mySlides w3-animate-bottom" src="~/Content/img/pipsi.jpg" style="width:100%">
+    <img class="mySlides w3-animate-bottom" src="~/Content/img/potato curly.jpg" style="width:100%">
+    <img class="mySlides w3-animate-bottom" src="~/Content/img/vegetable pizza.jpg" style="width:100%">
+</div>
+
+<script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) { myIndex = 1 }
+        x[myIndex - 1].style.display = "block";
+        setTimeout(carousel, 2000);
+    }
+</script>

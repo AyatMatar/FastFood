@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoriesID" />
+    </Key>
+    <Property Name="CategoriesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="neme" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="itemID" />
+    </Key>
+    <Property Name="itemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemSizePrice">
+    <Key>
+      <PropertyRef Name="ItemSizePriceID" />
+    </Key>
+    <Property Name="ItemSizePriceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="itemID" Type="int" Nullable="false" />
+    <Property Name="sizeID" Type="int" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="size">
+    <Key>
+      <PropertyRef Name="sizeID" />
+    </Key>
+    <Property Name="sizeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="Categories-item">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="item" Type="Self.item" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoriesID" />
+      </Principal>
+      <Dependent Role="item">
+        <PropertyRef Name="itemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ItemSizePrice_Item">
+    <End Role="item" Type="Self.item" Multiplicity="1" />
+    <End Role="ItemSizePrice" Type="Self.ItemSizePrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="itemID" />
+      </Principal>
+      <Dependent Role="ItemSizePrice">
+        <PropertyRef Name="itemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ItemSizePrice_Size">
+    <End Role="size" Type="Self.size" Multiplicity="1" />
+    <End Role="ItemSizePrice" Type="Self.ItemSizePrice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="size">
+        <PropertyRef Name="sizeID" />
+      </Principal>
+      <Dependent Role="ItemSizePrice">
+        <PropertyRef Name="sizeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="item" EntityType="Self.item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemSizePrice" EntityType="Self.ItemSizePrice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="size" EntityType="Self.size" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Categories-item" Association="Self.Categories-item">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="item" EntitySet="item" />
+    </AssociationSet>
+    <AssociationSet Name="ItemSizePrice_Item" Association="Self.ItemSizePrice_Item">
+      <End Role="item" EntitySet="item" />
+      <End Role="ItemSizePrice" EntitySet="ItemSizePrice" />
+    </AssociationSet>
+    <AssociationSet Name="ItemSizePrice_Size" Association="Self.ItemSizePrice_Size">
+      <End Role="size" EntitySet="size" />
+      <End Role="ItemSizePrice" EntitySet="ItemSizePrice" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

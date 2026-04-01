@@ -1,0 +1,188 @@
+﻿@model IEnumerable<MVC_AYAT.Category>
+
+@{
+    ViewBag.Title = "menu";
+}
+<style>
+    ul {
+        list-style: none;
+        float: left;
+        height: 36px;
+        margin-top: 10px
+    }
+
+    #menucontenar li {
+        color: #fefeff;
+        float: left;
+        width: 449px;
+        padding: 12px;
+        margin-left: 0px;
+        margin-right: 0px;
+        cursor: pointer;
+    }
+
+        #menucontenar li:hover {
+            color: #2cf3d7;
+        }
+
+    #menucontenar {
+        float: left;
+        width: 100%;
+        background-color: #b189ff;
+    }
+
+    .itemcontenar {
+        float: left;
+        background-color: #fffefe;
+       /* margin: 24px;*/
+        height: 289px;
+        width: 448px;
+        margin-left: 104px;
+        margin-top: 49px;
+    }
+
+    .Itemspan {
+        float: left;
+        width: 50%;
+        background-color: #9788ed;
+        color: #fcfbff;
+        text-align: center;
+        margin-left: 114px;
+    }
+
+    .ItemImg img {
+        width: 188px;
+        height: 155px;
+        margin-left: 132px;
+        border-radius: 46px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .ItemImg {
+        float: left;
+        width: 100%;
+    }
+
+    .itemcontenar select {
+        float: left;
+        margin-left: 167px;
+        width: 118px;
+        margin-bottom: 5px;
+        border: 2px solid #ededed;
+    }
+
+
+
+    .QuantityContenar {
+        float: left;
+        width: 100%;
+        padding-left: 162px;
+    }
+
+        .QuantityContenar input {
+            float: left;
+            width: 60px;
+        }
+
+
+    .Quantity {
+        float: left;
+        width: 24px;
+        height: 24px;
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-bottom: 5px
+    }
+
+    .Addbotton {
+        float: left;
+        width: 189px;
+        border-radius: 42px;
+        border: 2px solid #ffffff;
+        background-color: #9e8dff;
+        margin-left: 132px;
+        height: 33px;
+        color: #fff;
+    }
+
+        .Addbotton:hover {
+            color: #2cf3d7;
+        }
+</style>
+<div id="menucontenar">
+    <ul>
+        @foreach (var Row in Model)
+        {
+            <li id=" category-@Row.CategoryID" onclick="showmenu(@Row.CategoryID)">@Row.Name</li>
+        }
+    </ul>
+</div>
+
+
+<div id="menulist">
+    @foreach (var Row in Model)
+    {
+        <div class="tabs" id="tab-@Row.CategoryID">
+            @Html.Partial("ItemCategory", Row)
+        </div>
+    }
+</div>
+
+
+  @{ 
+      var Userinfo =(User) Session["userinfo"];
+  }
+
+<script>
+{
+    $(document).ready(function () {
+        $("#category-1").trigger("click");
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    function showmenu(CategoryID) {
+        $(".tabs").hide();
+        $("#tab-" + CategoryID + "").show();
+
+    }
+    function AddQuantity(itemID) {
+        var QuantityItem = parseInt($("#Quantity-" + itemID + "").val());
+        QuantityItem = QuantityItem + 1;
+        $("#Quantity-" + itemID + "").val(QuantityItem);
+    }
+
+    function RemovQuantity(itemID) {
+        var QuantityItem = parseInt($("#Quantity-" + itemID + "").val());
+        if (QuantityItem > 1) {
+            QuantityItem = QuantityItem - 1;
+            $("#Quantity-" + itemID + "").val(QuantityItem);
+        }
+    }
+    function AddcortItem(itemID) {
+            var UserID = parseInt("@(Userinfo==null ? -1 :Userinfo.UserID)")
+            if (UserID == -1) {
+                window.location = "/Home/Login";
+                return;
+            }
+
+        var ItemQuantity = parseInt($("#Quantity-" + itemID + "").val());
+        var orderQuantity = ($("#OrderQuantity").text()=="" ? 0 : parseInt($("#OrderQuantity").text()));
+        var TotalQuantity = orderQuantity + ItemQuantity;
+        $("#OrderQuantity").text(TotalQuantity);
+        $("#Quantity-" + itemID + "").val(1);
+        var ItemSizePrice = parseInt( $("#ItemContainer-" + itemID + " >select>Option:selected").val());
+
+        var Mydata = {
+            Quantity: ItemQuantity,
+            ItemSizePrice:ItemSizePrice,
+            UserID:UserID
+        };
+        $.ajax({
+            url:"/Home/AddcortItem",
+            type:"Post",
+            data:Mydata
+        });
+    }
+}
+</script>
+

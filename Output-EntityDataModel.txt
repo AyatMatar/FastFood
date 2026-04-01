@@ -1,0 +1,39 @@
+﻿Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.5645848.
+Generating the model took 00:00:01.2260175.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.4368982.
+Generating the model took 00:00:00.9931029.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.5413451.
+Generating the model took 00:00:00.9971918.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.4383715.
+Generating the model took 00:00:00.9767784.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.5429339.
+Generating the model took 00:00:00.9645535.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.4256570.
+Generating the model took 00:00:00.9825502.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.3883422.
+Generating the model took 00:00:00.2788433.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.4712564.
+Generating the model took 00:00:00.9874108.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.4733302.
+Generating the model took 00:00:01.0597851.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.3896877.
+Generating the model took 00:00:00.8514247.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.3864145.
+Generating the model took 00:00:00.2683724.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.4284394.
+Generating the model took 00:00:00.2552177.
+Generated model file: PizaaHat.edmx.
+Loading metadata from the database took 00:00:00.3816718.
+Generating the model took 00:00:00.2606659.

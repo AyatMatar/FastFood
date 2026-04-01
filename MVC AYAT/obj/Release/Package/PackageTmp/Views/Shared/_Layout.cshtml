@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayat</title>
+
+
+    <link href="~/Content/img/pizza.jpg" rel="icon">
+    <link href="~/Content/img/pipsi.jpg" rel="apple-touch-icon">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .navbar-inverse {
+            background-color: #553b87;
+            border-color: #553b87;
+            height: 60px;
+        }
+
+            .navbar-inverse .navbar-brand {
+                color: #ffff;
+            }
+
+            .navbar-inverse .navbar-nav > li > a {
+                color: #fff;
+            }
+
+                .navbar-inverse .navbar-nav > li > a:hover {
+                    color: #2cf3d7;
+                }
+
+        .navbar-nav {
+            margin-left: 30%;
+        }
+
+        footer {
+            background-color: #553b87;
+            color: #f5f5f5;
+            text-align: center;
+            height: 31px;
+            padding-top: 5px;
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+        }
+
+        .container {
+            width: 1899px;
+        }
+
+        #Carlconiotner {
+            float: right;
+            background: #fff;
+            width: 92px;
+            height: 45px;
+            margin-top: -43px;
+            margin-right: -6px;
+            cursor: pointer;
+        }
+
+        #OrderQuantity {
+            float: left;
+            font-size: 21px;
+            margin-top: 4px;
+            margin-left: 5px;
+            color: #553B87;
+            width: 38px;
+            height: 36px;
+        }
+
+        #shopping {
+            float: right;
+            width: 59px;
+            height: 39px;
+            margin-right: -13px;
+            font-size: 38px;
+            color: #553B87;
+        }
+
+        .Regstrationconiatner {
+            float: right;
+            margin-right: 16px;
+            background: #553B87;
+            height: 42px;
+            width: 91px;
+            margin-top: -40px;
+            color: #fefeff
+        }
+
+            .Regstrationconiatner a {
+                color: #fefeff;
+                display: block;
+                width: 100%;
+            }
+
+                .Regstrationconiatner a:hover {
+                    color: #2cf3d7;
+                }
+    </style>
+</head>
+<body>
+     @{
+         var UserInfo = (User)Session["userinfo"];
+         int OrderID =-1;
+         int Quantity = -1;
+         if (UserInfo != null)
+         {
+             PizzaHatEntities pizzaHatdata = new PizzaHatEntities();
+             var orderRecord = pizzaHatdata.Orders.Where(x => x.UserID == UserInfo.UserID && x.TrxnStatus == "temp").FirstOrDefault();
+             OrderID = 0;
+             if (orderRecord != null)
+             {
+                 OrderID = orderRecord.OrderID;
+                 var count = pizzaHatdata.Orderdetals.Where(x => x.OrderID == OrderID).ToList().Count();
+
+                 if (count > 0)
+                 {
+
+                     Quantity = pizzaHatdata.Orderdetals.Where(x => x.OrderID == OrderID).Sum(x => x.Quontity);
+                 }
+             }
+         }
+     }
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("SOBER PIZZA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @if (UserInfo == null)
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("menu", "menu", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        
+                    }
+                    else
+                    {
+                        if (UserInfo.UserType == "Normal")
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("menu", "menu", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Category", "Index", "Category")</li>
+                            <li>@Html.ActionLink("Item", "Index", "Item")</li>
+                            <li>@Html.ActionLink("Size", "Index", "Size")</li>
+                            <li>@Html.ActionLink("ItemSizePric", "Index", "ItemSizePric")</li>
+                            
+                            <li>@Html.ActionLink("Orders", "Orders", "Home")</li>
+                        }
+                    }
+                </ul>
+
+            </div>
+           
+
+
+
+
+            <div id="Carlconiotner" onclick="ShowCartItems()">
+               @if (Quantity == -1)
+                {
+                    <span id="OrderQuantity"></span>
+                }
+
+                else
+                {
+                    <span id="OrderQuantity">@Quantity</span>
+                }
+                  
+                <i id="shopping" class="fa fa-shopping-cart"></i>
+            </div>
+
+            @if (UserInfo == null)
+            {
+                <div class="Regstrationconiatner">
+                    <a href="/Home/Regstration">Regstration</a>
+                    <a href="/Home/Login">login</a>
+                </div>
+            }
+               else
+               {
+                 
+                   <div class="Regstrationconiatner">
+                   
+                       @UserInfo.Name
+                       <a href="/Home/logout">logout</a>
+                   </div>
+               }
+        </div>
+    </div>
+
+    <div class="container Fluid-content">
+       @RenderBody()
+      
+       <footer>
+           <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+       </footer>
+    </div>
+
+    <script>
+        function ShowCartItems(){
+
+            var OrderID = parseInt("@OrderID");
+            if (OrderID == -1) {
+                window.location = "/Home/Login"
+            }
+            else {
+                window.location = "/Home/ShowCartItems?OrderID=" + OrderID + "";
+            }
+            
+        }
+    </script>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

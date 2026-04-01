@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ayat_pizzadataa">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="Model.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CategoriesID" ColumnName="CategoriesID" />
+          <ScalarProperty Name="neme" ColumnName="neme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="items">
+      <EntityTypeMapping TypeName="Model.item">
+        <MappingFragment StoreEntitySet="item">
+          <ScalarProperty Name="itemID" ColumnName="itemID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemSizePrices">
+      <EntityTypeMapping TypeName="Model.ItemSizePrice">
+        <MappingFragment StoreEntitySet="ItemSizePrice">
+          <ScalarProperty Name="ItemSizePriceID" ColumnName="ItemSizePriceID" />
+          <ScalarProperty Name="itemID" ColumnName="itemID" />
+          <ScalarProperty Name="sizeID" ColumnName="sizeID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sizes">
+      <EntityTypeMapping TypeName="Model.size">
+        <MappingFragment StoreEntitySet="size">
+          <ScalarProperty Name="sizeID" ColumnName="sizeID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

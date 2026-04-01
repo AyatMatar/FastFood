@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MVC_AYAT.Order> 
+
+@{
+    ViewBag.Title = "Orders";
+}
+<style>
+    .divorder {
+        margin: 95px;
+    }
+
+</style>
+
+<div class="divorder">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Checkout Time</th>
+                <th>TrxnStatus</th>
+               
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+             {
+                <tr>
+                    <td>@item.User.Name</td>
+                    <td>@item.Checkout</td>
+                    <td>@item.TrxnStatus</td>
+                    
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { OrderID = item.OrderID }) |
+                
+                        @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })
+                    </td>
+                </tr>
+             }
+        </tbody>
+
+    </table>
+   
+</div>
+
+

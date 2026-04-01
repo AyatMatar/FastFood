@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PizzaHatModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PizzaHatEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="PizzaHatModel.Category" />
+    <EntitySet Name="Items" EntityType="PizzaHatModel.Item" />
+    <EntitySet Name="ItemSizePrics" EntityType="PizzaHatModel.ItemSizePric" />
+    <EntitySet Name="Orders" EntityType="PizzaHatModel.Order" />
+    <EntitySet Name="Orderdetals" EntityType="PizzaHatModel.Orderdetal" />
+    <EntitySet Name="Sizes" EntityType="PizzaHatModel.Size" />
+    <EntitySet Name="Users" EntityType="PizzaHatModel.User" />
+    <AssociationSet Name="FK_Item_Category" Association="PizzaHatModel.FK_Item_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Item" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSizePric_Item" Association="PizzaHatModel.FK_ItemSizePric_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="ItemSizePric" EntitySet="ItemSizePrics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemSizePric_Size" Association="PizzaHatModel.FK_ItemSizePric_Size">
+      <End Role="Size" EntitySet="Sizes" />
+      <End Role="ItemSizePric" EntitySet="ItemSizePrics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orderdetals_ItemSizePric" Association="PizzaHatModel.FK_Orderdetals_ItemSizePric">
+      <End Role="ItemSizePric" EntitySet="ItemSizePrics" />
+      <End Role="Orderdetal" EntitySet="Orderdetals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orderdetals_Order" Association="PizzaHatModel.FK_Orderdetals_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Orderdetal" EntitySet="Orderdetals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_User" Association="PizzaHatModel.FK_Order_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Items" Relationship="PizzaHatModel.FK_Item_Category" FromRole="Category" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="PizzaHatModel.FK_Item_Category" FromRole="Item" ToRole="Category" />
+    <NavigationProperty Name="ItemSizePrics" Relationship="PizzaHatModel.FK_ItemSizePric_Item" FromRole="Item" ToRole="ItemSizePric" />
+  </EntityType>
+  <EntityType Name="ItemSizePric">
+    <Key>
+      <PropertyRef Name="ItemSizePricID" />
+    </Key>
+    <Property Name="ItemSizePricID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemID" Type="Int32" Nullable="false" />
+    <Property Name="SizeID" Type="Int32" Nullable="false" />
+    <Property Name="pric" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Item" Relationship="PizzaHatModel.FK_ItemSizePric_Item" FromRole="ItemSizePric" ToRole="Item" />
+    <NavigationProperty Name="Size" Relationship="PizzaHatModel.FK_ItemSizePric_Size" FromRole="ItemSizePric" ToRole="Size" />
+    <NavigationProperty Name="Orderdetals" Relationship="PizzaHatModel.FK_Orderdetals_ItemSizePric" FromRole="ItemSizePric" ToRole="Orderdetal" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="SubmitTime" Type="DateTime" Precision="3" />
+    <Property Name="TrxnStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Checkout" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Orderdetals" Relationship="PizzaHatModel.FK_Orderdetals_Order" FromRole="Order" ToRole="Orderdetal" />
+    <NavigationProperty Name="User" Relationship="PizzaHatModel.FK_Order_User" FromRole="Order" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Orderdetal">
+    <Key>
+      <PropertyRef Name="OrderdetalsID" />
+    </Key>
+    <Property Name="OrderdetalsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemSizePriceID" Type="Int32" Nullable="false" />
+    <Property Name="Quontity" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ItemSizePric" Relationship="PizzaHatModel.FK_Orderdetals_ItemSizePric" FromRole="Orderdetal" ToRole="ItemSizePric" />
+    <NavigationProperty Name="Order" Relationship="PizzaHatModel.FK_Orderdetals_Order" FromRole="Orderdetal" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Size">
+    <Key>
+      <PropertyRef Name="SizeID" />
+    </Key>
+    <Property Name="SizeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ItemSizePrics" Relationship="PizzaHatModel.FK_ItemSizePric_Size" FromRole="Size" ToRole="ItemSizePric" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobilenumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="PizzaHatModel.FK_Order_User" FromRole="User" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_Item_Category">
+    <End Type="PizzaHatModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="PizzaHatModel.Item" Role="Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSizePric_Item">
+    <End Type="PizzaHatModel.Item" Role="Item" Multiplicity="1" />
+    <End Type="PizzaHatModel.ItemSizePric" Role="ItemSizePric" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="ItemSizePric">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemSizePric_Size">
+    <End Type="PizzaHatModel.Size" Role="Size" Multiplicity="1" />
+    <End Type="PizzaHatModel.ItemSizePric" Role="ItemSizePric" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="SizeID" />
+      </Principal>
+      <Dependent Role="ItemSizePric">
+        <PropertyRef Name="SizeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orderdetals_ItemSizePric">
+    <End Type="PizzaHatModel.ItemSizePric" Role="ItemSizePric" Multiplicity="1" />
+    <End Type="PizzaHatModel.Orderdetal" Role="Orderdetal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemSizePric">
+        <PropertyRef Name="ItemSizePricID" />
+      </Principal>
+      <Dependent Role="Orderdetal">
+        <PropertyRef Name="ItemSizePriceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orderdetals_Order">
+    <End Type="PizzaHatModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="PizzaHatModel.Orderdetal" Role="Orderdetal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="Orderdetal">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_User">
+    <End Type="PizzaHatModel.User" Role="User" Multiplicity="1" />
+    <End Type="PizzaHatModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

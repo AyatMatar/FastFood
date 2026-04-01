@@ -1,0 +1,35 @@
+﻿@model Category
+
+
+@foreach (var item in Model.Items)
+{
+<div id="ItemContainer-@item.ItemID" title="@item.Description" data-toggle="tooltip"  class="itemcontenar">
+    <span class="Itemspan">@item.Name</span>
+    <div class="ItemImg">
+        <img width="100" height="100" src="@Url.Content("/Content/img/" + item.ImageName + "")" />
+    </div>
+    
+    @{
+        List<SelectListItem> MyList = new List<SelectListItem>();
+        SelectListItem listItem = new SelectListItem();
+
+        foreach (var Row in item.ItemSizePrics)
+        {
+            listItem = new SelectListItem();
+            listItem.Text = "" + Row.Size.Name + " " + Row.pric + "";
+            listItem.Value = "" + Row.ItemSizePricID + "";
+            MyList.Add(listItem);
+        }
+    }
+    @Html.DropDownList("ItemSizePricID", MyList)
+
+    <div class="QuantityContenar">
+        <button class="Quantity" onclick="AddQuantity(@item.ItemID)">+</button>
+        <input type="number" id="Quantity-@item.ItemID" min="1" value="1" disabled />
+        <button class="Quantity" onclick="RemovQuantity(@item.ItemID)">-</button>
+    </div>
+    
+    <button onclick="AddcortItem(@item.ItemID)" class="Addbotton">Add</button>
+</div>
+}
+

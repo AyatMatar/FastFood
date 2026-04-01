@@ -1,0 +1,80 @@
+﻿@model MVC_AYAT.Models.ItemSizeModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ItemSizeModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ItemID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> MyListItem = new List<SelectListItem>();
+                    SelectListItem listItemItem = new SelectListItem();
+
+                    foreach (var Item in Model.Items)
+                    {
+                        listItemItem = new SelectListItem();
+                        listItemItem.Text = "" + Item.Name + "";
+                        listItemItem.Value = "" + Item.ItemID + "";
+                        MyListItem.Add(listItemItem);
+                    }
+                }
+                @Html.DropDownList("ItemID", MyListItem, "select Item")
+                @Html.ValidationMessageFor(model => model.ItemID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SizeID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> MyListSize = new List<SelectListItem>();
+                    SelectListItem listItemSize = new SelectListItem();
+
+                    foreach (var Sizes in Model.Sizes)
+                    {
+                        listItemSize = new SelectListItem();
+                        listItemSize.Text = "" + Sizes.Name + "";
+                        listItemSize.Value = "" + Sizes.SizeID + "";
+                        MyListSize.Add(listItemSize);
+                    }
+                }
+                @Html.DropDownList("SizeID", MyListSize, "select Item")
+                @Html.ValidationMessageFor(model => model.SizeID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pric, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pric, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.pric, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,83 @@
+E:\AYAT\MVC AYAT\MVC AYAT\bin\MVC AYAT.dll.config
+E:\AYAT\MVC AYAT\MVC AYAT\bin\MVC AYAT.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\MVC AYAT.pdb
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\csc.exe
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\csc.exe.config
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\csc.rsp
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\csi.exe
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\csi.exe.config
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\csi.rsp
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.Managed.Core.targets
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.AppContext.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Collections.Immutable.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Console.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Globalization.Calendars.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.IO.Compression.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.IO.FileSystem.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Net.Http.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Net.Sockets.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Reflection.Metadata.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.ValueTuple.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Xml.XmlDocument.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Xml.XPath.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\vbc.exe
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\vbc.exe.config
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\vbc.rsp
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\VBCSCompiler.exe
+E:\AYAT\MVC AYAT\MVC AYAT\bin\roslyn\VBCSCompiler.exe.config
+E:\AYAT\MVC AYAT\MVC AYAT\bin\Antlr3.Runtime.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\EntityFramework.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\EntityFramework.SqlServer.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\Microsoft.Web.Infrastructure.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\Newtonsoft.Json.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.Helpers.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.Mvc.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.Optimization.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.Razor.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.WebPages.Deployment.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.WebPages.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.WebPages.Razor.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\WebGrease.dll
+E:\AYAT\MVC AYAT\MVC AYAT\bin\EntityFramework.xml
+E:\AYAT\MVC AYAT\MVC AYAT\bin\EntityFramework.SqlServer.xml
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.Helpers.xml
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.Mvc.xml
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.Optimization.xml
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.Razor.xml
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.WebPages.xml
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.WebPages.Deployment.xml
+E:\AYAT\MVC AYAT\MVC AYAT\bin\System.Web.WebPages.Razor.xml
+E:\AYAT\MVC AYAT\MVC AYAT\bin\Newtonsoft.Json.xml
+E:\AYAT\MVC AYAT\MVC AYAT\bin\Antlr3.Runtime.pdb
+E:\AYAT\MVC AYAT\MVC AYAT\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\AYAT\MVC AYAT\MVC AYAT\obj\Release\MVC AYAT.csproj.AssemblyReference.cache
+E:\AYAT\MVC AYAT\MVC AYAT\obj\Release\MVC AYAT.csproj.CoreCompileInputs.cache
+E:\AYAT\MVC AYAT\MVC AYAT\obj\Release\MVC AYAT.csproj.CopyComplete
+E:\AYAT\MVC AYAT\MVC AYAT\obj\Release\MVC AYAT.dll
+E:\AYAT\MVC AYAT\MVC AYAT\obj\Release\MVC AYAT.pdb
